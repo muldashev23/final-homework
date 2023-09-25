@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.1-alpine
+    environment:
+      - POSTGRES_USER=murat
+      - POSTGRES_PASSWORD=murat2602128Ag
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=postgres;Username=postgres;Password=postgres
+      - JwtSettings__Key=ThisKeyIsMySecretButIWillNeverUseThis
+    depends_on:
+      - postgres

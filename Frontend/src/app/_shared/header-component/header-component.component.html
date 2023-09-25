@@ -1,0 +1,22 @@
+<header>
+    <nav [ngClass]="{'scrolled': isScrolled}">
+        <div class="navbar" >
+            <div class="logo">
+                <a href="#home"><img src="assets/eshop-logo.png" alt="Logo"></a>
+            </div>
+            <ul>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="">Mens</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#about">Womens</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#services">Kids</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#contact">Adidas</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#contact">Nike</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#contact">Puma</a></li>
+                <li><a [ngClass]="{'bigger': isScrolled}" href="#contact">Sale</a></li>
+            </ul>
+            <div class="user-links">
+                <button mat-raised-button routerLink="/registration" color="accent" [ngClass]="{'bigger': isScrolled}">Register</button>
+                <button mat-raised-button routerLink="/login" color="accent" [ngClass]="{'bigger': isScrolled}">Login</button>
+            </div>
+        </div>
+    </nav>
+</header>
