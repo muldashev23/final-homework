@@ -1,5 +1,11 @@
+using System.Text;
 using Backend.Data;
+using Backend.Extensions;
+using Backend.Interfaces;
+using Backend.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,15 +16,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>(opt =>
-{
-    var connectionString =
-        Environment.GetEnvironmentVariable("ConnectionStrings:DefaultConnection")
-        ?? builder.Configuration["ConnectionStrings:DefaultConnection"];
-    opt.UseNpgsql(connectionString);
-});
-
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
+app.UseCors(
+    builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200")
+);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -28,6 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

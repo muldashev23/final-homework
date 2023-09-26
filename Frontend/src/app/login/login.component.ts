@@ -20,7 +20,7 @@ export class LoginComponent {
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: (_) => this.router.navigateByUrl('/members'),
+      next: (_) => this.cancel(),
     });
   }
   cancel() {
