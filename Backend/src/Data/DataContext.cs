@@ -9,4 +9,6 @@ public class DataContext : DbContext
         : base(options) { }
 
     public DbSet<AppUser> Users { get; set; }
+    public DbSet<Shoes> Shoes { get; set; }
+    public DbSet<Cart> Carts { get; set; }
 }
