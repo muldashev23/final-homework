@@ -9,6 +9,8 @@ import { SharedModule } from './_shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ShoesCardComponent } from './shoes-card/shoes-card.component';
+import { ShoesDetailComponent } from './shoes-detail/shoes-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegistrationComponent,
     HomePageComponent,
+    ShoesCardComponent,
   ],
   imports: [
     BrowserModule,
