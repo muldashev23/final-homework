@@ -17,7 +17,7 @@ services:
       - "80:80"
   backend:
     build:
-      context: ./Backend
+      context: ./Backend/src
       dockerfile: Dockerfile
     ports:
       - "5001:5001"
