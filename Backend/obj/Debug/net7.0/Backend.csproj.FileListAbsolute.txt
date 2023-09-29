@@ -41,3 +41,8 @@
 /Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Npgsql.dll
 /Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/System.CodeDom.dll
+/Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/muratmuldashev/Desktop/dotnet/homework/final-homework/Backend/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll

@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<div class="container">
+    <a class="navbar-brand" routerLink="/" *ngIf="windowWidth>800">Sneakers</a>
+    <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+    <ng-container  *ngIf="windowWidth>800">
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" routerLink="/members" routerLinkActive="active">Men</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" routerLink="/lists" routerLinkActive="active">Women</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active">Kids</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active">Nike</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active">Adidas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lists" routerLinkActive="active">Puma</a>
+        </li>
+    </ng-container>
+    <ng-container >
+        <div class="dropdown" dropdown *ngIf="windowWidth<800">
+            <a style="text-decoration: none;" class="dropdown-toggle text-light navbar-brand" dropdownToggle>Sneakers</a>
+            <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item">Men</a>
+                <a class="dropdown-item" >Women</a>
+                <a class="dropdown-item" >Kids</a>
+                <a class="dropdown-item" >Nike</a>
+                <a class="dropdown-item" >Adidas</a>
+                <a class="dropdown-item" >Puma</a>
+            </div>
+        </div>
+    </ng-container>
+    </ul>
+    <div class="dropdown" dropdown *ngIf="(accountService.currentUser$ | async) as user" >
+        <a style="text-decoration: none;" class="dropdown-toggle text-light usernameTitle" dropdownToggle>Welcome {{user.username | titlecase}}!</a>
+        <div class="dropdown-menu" *dropdownMenu>
+        <a class="dropdown-item">Edit Profile</a>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+    </div>
+    <div *ngIf="!(accountService.currentUser$ | async) as user">
+        <button class="btn btn-success" style="margin-right: 1vw;" routerLink="/registration" routerLinkActive="active">Register</button>
+        <button class="btn btn-success" routerLink="/login" routerLinkActive="active">Login</button>
+    </div>
+    
+
+</div>
+</nav>
