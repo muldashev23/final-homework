@@ -8,5 +8,5 @@ public interface IShoesRepository
     void Update(Shoes shoes);
     Task<bool> SaveAllAsync();
     Task<IEnumerable<ShoesResponseDto>> GetAllShoesAsync();
-    Task<ShoesResponseDto> GetShoesAsync(string name);
+    Task<ShoesResponseDto> GetShoesByIdAsync(int name);
 }

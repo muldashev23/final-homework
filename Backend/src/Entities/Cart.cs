@@ -8,7 +8,7 @@ namespace Backend.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public required ICollection<Shoes> Tickets { get; set; }
+        public required ICollection<Shoes> Shoes { get; set; }
         public required AppUser User { get; set; }
         public int UserId { get; set; }
     }

@@ -9,8 +9,7 @@ namespace Backend.Services
         public MapperConfig()
         {
             CreateMap<ShoesRequestDTO, Shoes>();
-            CreateMap<ShoesResponseDto, Shoes>()
-                .ReverseMap()
+            CreateMap<Shoes, ShoesResponseDto>()
                 .ForMember(
                     dest => dest.PhotoUrl,
                     opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url)

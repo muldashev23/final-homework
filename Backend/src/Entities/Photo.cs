@@ -9,6 +9,6 @@ public class Photo
     public string Url { get; set; }
     public bool IsMain { get; set; }
     public string PublicId { get; set; }
-    public int AppUserId { get; set; }
+    public int ShoesID { get; set; }
     public Shoes Shoes { get; set; }
 }
