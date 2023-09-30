@@ -26,6 +26,17 @@ jobs:
         dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Check code format
+      run: |
+       dotnet format
+       incorrect_format=`git diff --exit-code`
+       if [ ! -z $incorrect_format ]
+       then
+         echo "Code format is not correct"
+         echo "Please correct the following changes"
+         echo "at $incorrect_format"
+         exit 1
+       fi
     - name: Build
       run: dotnet build --no-restore
     - name: Test
