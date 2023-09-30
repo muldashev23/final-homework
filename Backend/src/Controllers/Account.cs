@@ -4,6 +4,7 @@ using Backend.Data;
 using Backend.DTOs;
 using Backend.Entities;
 using Backend.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,9 +66,22 @@ public class Account : BaseApiController
         };
     }
 
-    [HttpGet]
-    private async Task<bool> VerifyUser(string username)
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteUser([FromRoute] int id)
     {
-        return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
+        var user = await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
+    [HttpGet]
+    private async Task<bool> VerifyUser(string email)
+    {
+        return await _context.Users.AnyAsync(x => x.Email == email.ToLower());
     }
 }

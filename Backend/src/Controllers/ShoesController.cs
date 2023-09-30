@@ -15,16 +15,16 @@ namespace Backend.Controllers
         }
 
         [HttpGet] // GET http://loca....../api/users
-        public async Task<ActionResult<IEnumerable<ShoesResponseDto>>> GetShoes()
+        public async Task<ActionResult<IEnumerable<ShoesResponseDto>>> GetAllShoes()
         {
             var shoes = await _shoesRepository.GetAllShoesAsync();
             return Ok(shoes);
         }
 
-        [HttpGet("{name}")] // GET http://loca....../api/users/{id}
-        public async Task<ActionResult<ShoesResponseDto>> GetShoes([FromRoute] string name)
+        [HttpGet("{id}")] // GET http://loca....../api/users/{id}
+        public async Task<ActionResult<ShoesResponseDto>> GetShoes([FromRoute] int id)
         {
-            return await _shoesRepository.GetShoesAsync(name);
+            return await _shoesRepository.GetShoesByIdAsync(id);
         }
     }
 }

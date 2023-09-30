@@ -1,15 +1,19 @@
 <div class="row" *ngIf="shoes">
-    <div class="col-4">
+    <div class="col-2">
         <div class="card">
             <img src="{{shoes.photoUrl || './assets/user.png'}}" alt="{{shoes.name}}" class="card-img-top img-thumbnail">
             <div class="card-body">
                 <div>
-                    <strong>Location:</strong>
-                    <p>{{shoes.brand}}, {{shoes.name}}</p>
+                    <strong>Name:</strong>
+                    <p>{{shoes.brand}} {{shoes.name}}</p>
                 </div>
                 <div>
-                    <strong>Age:</strong>
-                    <p>{{shoes.price}}</p>
+                    <strong>Price:</strong>
+                    <p>{{shoes.price}} $</p>
+                </div>
+                <div>
+                    <strong>Size:</strong>
+                    <p>42 , 43</p>
                 </div>
             </div>
             <div class="card-footer">
@@ -18,22 +22,27 @@
                         Like
                     </button>
                     <button class="btn btn-success">
-                        Messages
+                        Add to Cart
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-8">
-        <tabset class="member-tabset">
-            <tab heading="Photos" #photoTab = "tab">
-                <h4>Photos</h4>
-                <gallery *ngIf="photoTab.active" [items]="images" class="gallery"></gallery>
-            </tab>
-            <tab heading="Messages">
-                <h4>Messages</h4>
-                <p>messages will go here</p>
-            </tab>
-        </tabset>
+    <div class="col-6">
+        <gallery [items]="images" class="gallery"></gallery>
+    </div>
+    <div class="col-2">
+        <div class="card">
+            <div class="card-title">
+                <h3>Cart</h3>
+            </div>
+            <div class="card-body">
+                <p>name</p>
+
+            </div>
+            <div class="card-footer">
+                <h5>Total:..................135$</h5>
+            </div>
+        </div>
     </div>
 </div>

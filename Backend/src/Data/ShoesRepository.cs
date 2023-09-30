@@ -28,10 +28,10 @@ public class ShoesRepository : IShoesRepository
         _context.Entry(shoes).State = EntityState.Modified;
     }
 
-    public async Task<ShoesResponseDto> GetShoesAsync(string name)
+    public async Task<ShoesResponseDto> GetShoesByIdAsync(int id)
     {
         return await _context.Shoes
-            .Where(x => x.Name == name)
+            .Where(x => x.Id == id)
             .ProjectTo<ShoesResponseDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
     }
