@@ -5,10 +5,28 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],"Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 48,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 39,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 38,
+                "Amount": 10
             }
         ]
     },
@@ -18,10 +36,29 @@
         "Price": 120,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e125b578-4173-401a-ab13-f066979c8848/bota-air-force-1-pro-VNFVMl.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 41,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 43,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 44,
+                "Amount": 10
             }
         ]
     },
@@ -31,23 +68,29 @@
         "Price": 120,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": false,
         "Photos": [
             {
                 "Url": "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fdd2ed4315b74f6ea506acb600b20504_9366/Boty_OZWEEGO_bezova_FX6029_01_standard.jpg",
                 "IsMain": true
             }
-        ]
-    },
-    {
-        "Name": "Air Max 90",
-        "Brand": "Nike",
-        "Price": 100,
-        "Amount": 200,
-        "Available": 200,
-        "Photos": [
+        ],
+        "Sizes" : [
             {
-                "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
-                "IsMain": true
+                "SizeNum" : 36,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 37,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 39,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 38,
+                "Amount": 10
             }
         ]
     },
@@ -57,10 +100,29 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 48,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 39,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 38,
+                "Amount": 10
             }
         ]
     },
@@ -70,10 +132,17 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 44,
+                "Amount": 10
             }
         ]
     },
@@ -83,10 +152,17 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
             }
         ]
     },
@@ -96,10 +172,17 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 39,
+                "Amount": 10
             }
         ]
     },
@@ -109,10 +192,17 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 47,
+                "Amount": 10
             }
         ]
     },
@@ -122,10 +212,61 @@
         "Price": 100,
         "Amount": 200,
         "Available": 200,
+        "IsForMan": true,
         "Photos": [
             {
                 "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
                 "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 48,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 39,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 38,
+                "Amount": 10
+            }
+        ]
+    },
+    {
+        "Name": "Air Max 90",
+        "Brand": "Nike",
+        "Price": 100,
+        "Amount": 200,
+        "Available": 200,
+        "IsForMan": true,
+        "Photos": [
+            {
+                "Url": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f9e940d3-2192-434e-a017-072303ce2f14/air-max-90-shoes-gRdHLH.png",
+                "IsMain": true
+            }
+        ],
+        "Sizes" : [
+            {
+                "SizeNum" : 42,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 43,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 41,
+                "Amount": 10
+            },
+            {
+                "SizeNum" : 39,
+                "Amount": 10
             }
         ]
     }

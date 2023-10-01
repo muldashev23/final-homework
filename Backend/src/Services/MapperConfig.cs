@@ -15,6 +15,7 @@ namespace Backend.Services
                     opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.IsMain).Url)
                 );
             CreateMap<Photo, PhotoDTO>().ReverseMap();
+            CreateMap<Size, SizeDTO>().ReverseMap();
         }
     }
 }

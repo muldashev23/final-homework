@@ -24,7 +24,10 @@ namespace Backend.Controllers
         [HttpGet("{id}")] // GET http://loca....../api/users/{id}
         public async Task<ActionResult<ShoesResponseDto>> GetShoes([FromRoute] int id)
         {
-            return await _shoesRepository.GetShoesByIdAsync(id);
+            var shoes = await _shoesRepository.GetShoesByIdAsync(id);
+            if (shoes == null)
+                return NotFound();
+            return Ok(shoes);
         }
     }
 }

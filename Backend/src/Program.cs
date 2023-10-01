@@ -31,7 +31,7 @@ app.MapControllers();
 using var scrope = app.Services.CreateScope();
 var services = scrope.ServiceProvider;
 
-/*try
+try
 {
     var context = services.GetRequiredService<DataContext>();
     await context.Database.MigrateAsync();
@@ -41,6 +41,6 @@ catch (Exception ex)
 {
     var logger = services.GetService<ILogger<Program>>();
     logger.LogError(ex, "An error occured during migration");
-}*/
+}
 
 app.Run();

@@ -11,6 +11,8 @@ public class ShoesRequestDTO
     public required int Amount { get; set; }
 
     public required int Available { get; set; }
+    public required bool IsForMan { get; set; }
 
     public List<PhotoDTO> Photos { get; set; } = new();
+    public List<SizeDTO> Sizes { get; set; } = new();
 }

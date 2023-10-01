@@ -15,7 +15,7 @@ export class ShoesSeviceService {
     return this.http.get<Shoes[]>(this.baseUrl + 'shoes');
   }
 
-  getOneShoes(name: string) {
-    return this.http.get<Shoes>(this.baseUrl + 'shoes/' + name);
+  getOneShoes(id: string) {
+    return this.http.get<Shoes>(this.baseUrl + 'shoes/' + id);
   }
 }

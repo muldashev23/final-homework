@@ -13,7 +13,12 @@
                 </div>
                 <div>
                     <strong>Size:</strong>
-                    <p>42 , 43</p>
+                    <div>
+                        <ng-template ngFor let-item="$implicit" [ngForOf]="shoes.sizes">
+                            <button type="button" class="btn btn-outline-secondary">{{item.sizeNum}}</button>
+                        </ng-template>
+                    </div>
+                   
                 </div>
             </div>
             <div class="card-footer">
