@@ -2,35 +2,39 @@
     <div class="col-2">
         <div class="card">
             <img src="{{shoes.photoUrl || './assets/user.png'}}" alt="{{shoes.name}}" class="card-img-top img-thumbnail">
-            <div class="card-body">
-                <div>
-                    <strong>Name:</strong>
-                    <p>{{shoes.brand}} {{shoes.name}}</p>
-                </div>
-                <div>
-                    <strong>Price:</strong>
-                    <p>{{shoes.price}} $</p>
-                </div>
-                <div>
-                    <strong>Size:</strong>
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <div  class="card-body">
                     <div>
-                        <ng-template ngFor let-item="$implicit" [ngForOf]="shoes.sizes">
-                            <button type="button" class="btn btn-outline-secondary">{{item.sizeNum}}</button>
-                        </ng-template>
+                        <strong>Name:</strong>
+                        <p>{{shoes.brand}} {{shoes.name}}</p>
                     </div>
-                   
+                    <div>
+                        <strong>Price:</strong>
+                        <p>{{shoes.price}} $</p>
+                    </div>
+                    <div>
+                        <strong>Size:</strong>
+                                
+                                <div class="btn-group" role="group">
+                                    <ng-template ngFor let-item="$implicit" [ngForOf]="shoes.sizes">
+                                        <input type="radio" name="size" class="btn-check" [(ngModel)]="sizeId" [id]="item.id" [value]="item.id" autocomplete="off"/>
+                                        <label class="btn btn-outline-primary" [for]="item.id">{{item.sizeNum}}</label>
+                                    </ng-template>
+                                </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <div class="btn-group d-flex">
-                    <button class="btn btn-primary">
-                        Like
-                    </button>
-                    <button class="btn btn-success">
-                        Add to Cart
-                    </button>
+                <div class="card-footer">
+                    <div class="btn-group d-flex">
+                        <button class="btn btn-primary">
+                            Like
+                        </button>
+                        <button class="btn btn-success" type="submit">
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            
         </div>
     </div>
     <div class="col-6">
