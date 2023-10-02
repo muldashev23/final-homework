@@ -36,10 +36,20 @@ public class ShoesRepository : IShoesRepository
             .SingleOrDefaultAsync();
     }
 
+    public async Task<Shoes> GetShoesByIdForCartAsync(int id)
+    {
+        return await _context.Shoes.Where(x => x.Id == id).SingleOrDefaultAsync();
+    }
+
     public async Task<IEnumerable<ShoesResponseDto>> GetAllShoesAsync()
     {
         return await _context.Shoes
             .ProjectTo<ShoesResponseDto>(_mapper.ConfigurationProvider)
             .ToListAsync();
+    }
+
+    public async Task<Shoes> GetShoo(int id)
+    {
+        return await _context.Shoes.Where(x => x.Id == id).SingleOrDefaultAsync();
     }
 }

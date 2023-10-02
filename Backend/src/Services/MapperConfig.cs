@@ -16,6 +16,10 @@ namespace Backend.Services
                 );
             CreateMap<Photo, PhotoDTO>().ReverseMap();
             CreateMap<Size, SizeDTO>().ReverseMap();
+            CreateMap<AppUser, UserDTO>().ReverseMap();
+            CreateMap<ShoesResponseDto, Shoes>();
+            CreateMap<Cart, CartResponseDTO>();
+            CreateMap<SelectedSize, SelectedSizeDTO>().ReverseMap();
         }
     }
 }

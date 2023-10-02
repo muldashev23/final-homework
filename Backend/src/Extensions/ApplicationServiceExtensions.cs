@@ -22,6 +22,8 @@ public static class ApplicationServiceExtensions
         services.AddCors();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IShoesRepository, ShoesRepository>();
+        services.AddScoped<IUserService, UserRepository>();
+        services.AddScoped<ICartRepository, CartRepository>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         return services;
     }

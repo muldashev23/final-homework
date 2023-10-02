@@ -2,17 +2,20 @@
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Backend.Data.Migrations
+namespace Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231002145056_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +62,8 @@ namespace Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -89,6 +93,30 @@ namespace Backend.Data.Migrations
                     b.HasIndex("ShoesID");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("Backend.Entities.SelectedSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ShoesIdForSize")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SizeNum")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("SelcetedSizes");
                 });
 
             modelBuilder.Entity("Backend.Entities.Shoes", b =>
@@ -166,8 +194,8 @@ namespace Backend.Data.Migrations
             modelBuilder.Entity("Backend.Entities.Cart", b =>
                 {
                     b.HasOne("Backend.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("Cart")
+                        .HasForeignKey("Backend.Entities.Cart", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -183,6 +211,17 @@ namespace Backend.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Shoes");
+                });
+
+            modelBuilder.Entity("Backend.Entities.SelectedSize", b =>
+                {
+                    b.HasOne("Backend.Entities.Cart", "Cart")
+                        .WithMany("Sizes")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
                 });
 
             modelBuilder.Entity("Backend.Entities.Size", b =>
@@ -209,6 +248,16 @@ namespace Backend.Data.Migrations
                         .HasForeignKey("ShoesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Backend.Entities.AppUser", b =>
+                {
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("Backend.Entities.Cart", b =>
+                {
+                    b.Navigation("Sizes");
                 });
 
             modelBuilder.Entity("Backend.Entities.Shoes", b =>

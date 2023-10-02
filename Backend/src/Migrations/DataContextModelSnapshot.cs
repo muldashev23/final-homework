@@ -2,20 +2,17 @@
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Backend.Data.Migrations
+namespace Backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230930114356_Shoes")]
-    partial class Shoes
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +59,8 @@ namespace Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -94,6 +92,33 @@ namespace Backend.Data.Migrations
                     b.ToTable("Photos");
                 });
 
+            modelBuilder.Entity("Backend.Entities.SelectedSize", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SelectedShoesId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ShoesIdForSize")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SizeNum")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("SelcetedSizes");
+                });
+
             modelBuilder.Entity("Backend.Entities.Shoes", b =>
                 {
                     b.Property<int>("Id")
@@ -112,6 +137,9 @@ namespace Backend.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsForMan")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -122,6 +150,30 @@ namespace Backend.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Shoes");
+                });
+
+            modelBuilder.Entity("Backend.Entities.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ShoesID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SizeNum")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShoesID");
+
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("CartShoes", b =>
@@ -142,8 +194,8 @@ namespace Backend.Data.Migrations
             modelBuilder.Entity("Backend.Entities.Cart", b =>
                 {
                     b.HasOne("Backend.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne("Cart")
+                        .HasForeignKey("Backend.Entities.Cart", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -154,6 +206,28 @@ namespace Backend.Data.Migrations
                 {
                     b.HasOne("Backend.Entities.Shoes", "Shoes")
                         .WithMany("Photos")
+                        .HasForeignKey("ShoesID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Shoes");
+                });
+
+            modelBuilder.Entity("Backend.Entities.SelectedSize", b =>
+                {
+                    b.HasOne("Backend.Entities.Cart", "Cart")
+                        .WithMany("SelectedSizes")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("Backend.Entities.Size", b =>
+                {
+                    b.HasOne("Backend.Entities.Shoes", "Shoes")
+                        .WithMany("Sizes")
                         .HasForeignKey("ShoesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -176,9 +250,21 @@ namespace Backend.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Backend.Entities.AppUser", b =>
+                {
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("Backend.Entities.Cart", b =>
+                {
+                    b.Navigation("SelectedSizes");
+                });
+
             modelBuilder.Entity("Backend.Entities.Shoes", b =>
                 {
                     b.Navigation("Photos");
+
+                    b.Navigation("Sizes");
                 });
 #pragma warning restore 612, 618
         }

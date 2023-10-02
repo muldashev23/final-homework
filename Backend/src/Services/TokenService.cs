@@ -13,7 +13,8 @@ public class TokenService : ITokenService
 
     public TokenService(IConfiguration config)
     {
-        _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+        var secKey = config["TokenKey"];
+        _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secKey));
     }
 
     public string CreateToken(AppUser user)
@@ -21,7 +22,8 @@ public class TokenService : ITokenService
         var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.NameId, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email)
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim("userId", user.Id.ToString())
         };
 
         var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

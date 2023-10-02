@@ -29,5 +29,14 @@ namespace Backend.Controllers
                 return NotFound();
             return Ok(shoes);
         }
+
+        [HttpGet("shoo/{id}")]
+        public async Task<ActionResult<ShoesResponseDto>> GetSho([FromRoute] int id)
+        {
+            var shoes = await _shoesRepository.GetShoo(id);
+            if (shoes == null)
+                return NotFound();
+            return Ok(shoes);
+        }
     }
 }

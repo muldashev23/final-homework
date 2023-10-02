@@ -29,8 +29,8 @@ public class Shoes
     public required int Available { get; set; }
 
     [JsonIgnore]
-    public ICollection<Cart> Carts { get; set; }
+    public List<Cart> Carts { get; set; }
 
-    public List<Photo> Photos { get; set; } = new();
-    public List<Size> Sizes { get; set; } = new();
+    public required List<Photo> Photos { get; set; } = new();
+    public required List<Size> Sizes { get; set; } = new();
 }

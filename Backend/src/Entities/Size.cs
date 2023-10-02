@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Entities;
 
@@ -6,8 +8,8 @@ namespace Backend.Entities;
 public class Size
 {
     public int Id { get; set; }
-    public int SizeNum { get; set; }
-    public int Amount { get; set; }
+    public required int SizeNum { get; set; }
+    public required int Amount { get; set; }
     public int ShoesID { get; set; }
     public Shoes Shoes { get; set; }
 }

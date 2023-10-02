@@ -4,7 +4,7 @@ public class ShoesResponseDto
 {
     public required int Id { get; set; }
     public required string Name { get; set; }
-    public string PhotoUrl { get; set; }
+    public required string PhotoUrl { get; set; }
 
     public required string Brand { get; set; }
 

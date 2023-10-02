@@ -3,6 +3,6 @@
 public class SizeDTO
 {
     public int Id { get; set; }
-    public int SizeNum { get; set; }
-    public int Amount { get; set; }
+    public required int SizeNum { get; set; }
+    public required int Amount { get; set; }
 }
