@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Shoes } from '../_models/shoes';
+import { AddShoes } from '../_models/addShoes';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,26 @@ export class ShoesSeviceService {
     return this.http.get<Shoes[]>(this.baseUrl + 'shoes');
   }
 
-  getOneShoes(name: string) {
-    return this.http.get<Shoes>(this.baseUrl + 'shoes/' + name);
+  getOneShoes(id: string) {
+    return this.http.get<Shoes>(this.baseUrl + 'shoes/' + id);
+  }
+
+  sortByGender(gender: string | null) {
+    return this.http.get<Shoes[]>(this.baseUrl + 'shoes/gender/' + gender);
+  }
+
+  sortByBrand(name: string | null) {
+    return this.http.get<Shoes[]>(this.baseUrl + 'shoes/brand/' + name);
+  }
+  delete(shoesId: number) {
+    return this.http.delete(this.baseUrl + 'shoes/' + `${shoesId}`);
+  }
+  addNewShoes(shoes: AddShoes, sizes: any, photos: any) {
+    shoes.available = shoes.amount;
+    shoes.photos = photos;
+    shoes.sizes = sizes;
+    console.log(shoes);
+
+    return this.http.post(this.baseUrl + 'shoes', shoes);
   }
 }

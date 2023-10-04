@@ -1,34 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Shoes } from '../_models/shoes';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { ActivatedRoute } from '@angular/router';
 import { ShoesSeviceService } from '../_services/shoes-sevice.service';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  NgForm,
+} from '@angular/forms';
+import { CartServiceService } from '../_services/cart-service.service';
+import { Cart } from '../_models/cart';
+import { Size } from '../_models/size';
 
 @Component({
   selector: 'app-shoes-detail',
   standalone: true,
+  imports: [
+    NgFor,
+    CommonModule,
+    TabsModule,
+    GalleryModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './shoes-detail.component.html',
   styleUrls: ['./shoes-detail.component.css'],
-  imports: [CommonModule, TabsModule, GalleryModule],
 })
-export class ShoesDetailComponent {
+export class ShoesDetailComponent implements OnInit {
   shoes: Shoes | undefined;
   images: GalleryItem[] = [];
+  sizeId: number = 0;
+  cart: Cart | undefined;
+  totalAmount = 0;
 
   constructor(
     private shoesService: ShoesSeviceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartServiceService
   ) {}
 
   ngOnInit(): void {
     this.loadShoes();
+    this.loadCart();
   }
   loadShoes() {
-    var name = this.route.snapshot.paramMap.get('name');
-    if (!name) return;
-    this.shoesService.getOneShoes(name).subscribe({
+    let id = this.route.snapshot.paramMap.get('id');
+    if (!id) return;
+    this.shoesService.getOneShoes(id).subscribe({
       next: (shoes) => {
         (this.shoes = shoes), this.getImages();
       },
@@ -40,5 +61,29 @@ export class ShoesDetailComponent {
     for (const photo of this.shoes.photos) {
       this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
     }
+  }
+
+  loadCart() {
+    this.cartService.getCart().subscribe({
+      next: (cart) => {
+        this.cart = cart;
+        if (this.cart && this.cart.id !== 0) {
+          this.totalAmount = this.cartService.calculateTotalPrice(this.cart);
+        }
+      },
+    });
+  }
+  onSubmit() {
+    console.log(this.shoes?.id);
+    let sizeToBuy: Size;
+    this.shoes?.sizes.forEach((x) => {
+      if (x.id === this.sizeId) {
+        sizeToBuy = x;
+        this.cartService.addToCart(sizeToBuy, `${this.shoes?.id}`).subscribe({
+          next: (size) => {},
+        });
+      }
+    });
+    window.location.reload();
   }
 }

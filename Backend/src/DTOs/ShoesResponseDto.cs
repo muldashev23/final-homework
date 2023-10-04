@@ -4,7 +4,7 @@ public class ShoesResponseDto
 {
     public required int Id { get; set; }
     public required string Name { get; set; }
-    public string PhotoUrl { get; set; }
+    public required string PhotoUrl { get; set; }
 
     public required string Brand { get; set; }
 
@@ -14,5 +14,8 @@ public class ShoesResponseDto
 
     public required int Available { get; set; }
 
+    public required bool IsForMan { get; set; }
+
     public List<PhotoDTO> Photos { get; set; } = new();
+    public List<SizeDTO> Sizes { get; set; } = new();
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
+import { EditProfile } from '../_models/editProfile';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,9 @@ export class AccountService {
           }
         })
       );
+  }
+  edit(user: EditProfile, id: any) {
+    return this.http.put(this.baseUrl + 'account/' + id, user);
   }
 
   setCurrentUser(user: User) {

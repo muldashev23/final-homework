@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Entities;
 
@@ -6,8 +7,8 @@ namespace Backend.Entities;
 public class Photo
 {
     public int Id { get; set; }
-    public string Url { get; set; }
-    public bool IsMain { get; set; }
+    public required string Url { get; set; }
+    public required bool IsMain { get; set; }
     public string PublicId { get; set; }
     public int ShoesID { get; set; }
     public Shoes Shoes { get; set; }

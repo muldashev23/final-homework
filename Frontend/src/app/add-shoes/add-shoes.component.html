@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <form [formGroup]="addForm" (ngSubmit)="addShoes()" autocomplete="off">
+                <h2 class="text-center text-primary">New Shoes</h2>
+                <hr>
+                <div class="mb-3"> 
+                    <input type="text"
+                        [class.is-invalid]="addForm.get('name')?.errors && addForm.get('name')?.touched"
+                        class="form-control"
+                        formControlName = "name"
+                        placeholder="Name"
+                    >
+                    <div class="invalid-feedback">Please enter a Name of the shoes</div>
+                </div>
+                <div class="mb-3">
+                    <input type="text"
+                        [class.is-invalid]="addForm.get('brand')?.errors && addForm.get('brand')?.touched"
+                        class="form-control"
+                        formControlName = "brand"
+                        placeholder="Brand"
+                    >
+                    <div class="invalid-feedback">Please enter a Brand Name</div>
+                </div>
+                <div class="mb-3">
+                    <input type="text"
+                        [class.is-invalid]="addForm.get('price')?.errors && addForm.get('price')?.touched"
+                        class="form-control"
+                        formControlName = "price"
+                        placeholder="Price"
+                    >
+                    <div class="invalid-feedback">Please enter a Price</div>
+                </div>
+                <div class="mb-3">
+                    <input type="text"
+                        [class.is-invalid]="addForm.get('amount')?.errors && addForm.get('amount')?.touched"
+                        class="form-control"
+                        formControlName = "amount"
+                        placeholder="Amount"
+                    >
+                    <div class="invalid-feedback">Please enter a Amount</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" [value]="true" formControlName="isForMan"> Man
+                    </label>
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" [value]="false" formControlName="isForMan"> Woman
+                    </label>
+                </div>
+                <h4 class="text-center text-primary">Photos</h4>
+                <hr>
+                <form style="margin-bottom: 2vh;" [formGroup]="photosForm" autocomplete="off">
+                    <div class="mb-3">
+                        <input type="text"
+                            [class.is-invalid]="addForm.get('url')?.errors && addForm.get('url')?.touched"
+                            class="form-control"
+                            formControlName = "url"
+                            placeholder="Url"
+                        >
+                        <div class="invalid-feedback">Please enter a Url</div>
+                    </div>
+                    <div class="mb-3">
+                        <label style="margin-right: 3vw;">Is Main</label>
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" [value]="true" formControlName="isMain"> Yes
+                        </label>
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" [value]="false" formControlName="isMain"> No
+                        </label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-success me-2" type="button" (click)="addPhotos()">Add Photo</button>
+                    </div>
+                </form>
+                <h4 class="text-center text-primary">Sizes</h4>
+                <hr>
+                <form style="margin-bottom: 2vh;" [formGroup]="sizeForm" autocomplete="off">
+                    <div class="mb-3">
+                        <input type="text"
+                            [class.is-invalid]="addForm.get('sizeNum')?.errors && addForm.get('sizeNum')?.touched"
+                            class="form-control"
+                            formControlName = "sizeNum"
+                            placeholder="Size Number"
+                        >
+                        <div class="invalid-feedback">Please enter a Size Number</div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text"
+                            [class.is-invalid]="addForm.get('amount')?.errors && addForm.get('amount')?.touched"
+                            class="form-control"
+                            formControlName = "amount"
+                            placeholder="Amount"
+                        >
+                        <div class="invalid-feedback">Please enter a Amount of Shoes</div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-success me-2" type="button" (click)="addSizes()">Add Size</button>
+                    </div>
+                </form>
+                
+                <div class="text-center">
+                    <button class="btn btn-success me-2" type="submit">Add New Shoes</button>
+                    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

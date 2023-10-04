@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
@@ -11,11 +10,7 @@ import { AccountService } from 'src/app/_services/account.service';
 export class HeaderLayoutComponent {
   userModel: any = {};
   windowWidth: number;
-  constructor(
-    public accountService: AccountService,
-    private router: Router,
-    private toastr: ToastrService
-  ) {
+  constructor(public accountService: AccountService, private router: Router) {
     this.windowWidth = window.innerWidth;
   }
   ngOnInit() {}
