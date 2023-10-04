@@ -4,8 +4,7 @@ WORKDIR /usr/local/app
 COPY  ./ /usr/local/app
 
 RUN npm install
-ARG RAILWAY_ENVIRONMENT
-RUN npm run build:production
+RUN npm run build
 
 FROM nginx:alpine AS ngi
 COPY --from=build /usr/local/app/dist/project-frontend /usr/share/nginx/html
