@@ -5,7 +5,7 @@ COPY  ./ /usr/local/app
 
 RUN npm install
 ARG RAILWAY_ENVIRONMENT
-RUN if [ "$RAILWAY_ENVIRONMENT" = "production" ] ; then npm run build:production ; else npm run build ;
+RUN if [ "$RAILWAY_ENVIRONMENT" = "production" ] ; then npm run build:production ; else npm run build ; fi
 
 FROM nginx:alpine AS ngi
 COPY --from=build /usr/local/app/dist/project-frontend /usr/share/nginx/html
