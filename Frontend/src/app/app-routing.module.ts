@@ -11,8 +11,8 @@ import { HomeGenderComponent } from './home-page/searches/home-gender/home-gende
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { authGuard } from './_guard/auth.guard';
 import { isAdminGuard } from './_guard/is-admin.guard';
-import { EditShoesComponent } from './edit-shoes/edit-shoes.component';
 import { AddShoesComponent } from './add-shoes/add-shoes.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -29,15 +29,11 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'edit-shoes/:id',
-    component: EditShoesComponent,
-    canActivate: [isAdminGuard],
-  },
-  {
     path: 'add-shoes',
     component: AddShoesComponent,
     canActivate: [isAdminGuard],
   },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent },
 ];
 

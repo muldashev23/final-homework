@@ -61,4 +61,13 @@ public class CartRepository : ICartRepository
             .ProjectTo<CartResponseDTO>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
     }
+
+    public async Task CheckOut(int id)
+    {
+        var cart = await _context.Carts.Where(x => x.UserId == id).SingleOrDefaultAsync();
+        _context.Carts.Remove(cart);
+        await _context.SaveChangesAsync();
+        Console.WriteLine("ok");
+        return;
+    }
 }

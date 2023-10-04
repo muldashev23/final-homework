@@ -1,5 +1,5 @@
-import { Photo } from './photo';
-import { Size } from './size';
+import { NewPhoto } from './newPhotos';
+import { NewSize } from './newSizes';
 
 export interface AddShoes {
   name: string;
@@ -8,6 +8,6 @@ export interface AddShoes {
   isForMan: boolean;
   amount: number;
   available: number;
-  photos: Photo[];
-  sizes: Size[];
+  photos: NewPhoto[];
+  sizes: NewSize[];
 }

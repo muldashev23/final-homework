@@ -26,6 +26,7 @@ public class CartController : BaseApiController
     }
 
     [HttpPost("add/{shoesId}")]
+    [Authorize]
     public async Task<ActionResult<SizeDTO>> AddToCard(
         [FromRoute] int shoesId,
         [FromBody] SizeDTO sizeData
@@ -52,6 +53,7 @@ public class CartController : BaseApiController
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<ActionResult<CartResponseDTO>> ListCart()
     {
         var idClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "userId").Value;
@@ -69,5 +71,27 @@ public class CartController : BaseApiController
             return new CartResponseDTO();
         }
         return await _cartRepository.ListCart(user.Id);
+    }
+
+    [HttpDelete]
+    [Authorize]
+    public async Task<ActionResult> ChekOut()
+    {
+        var idClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "userId").Value;
+        if (idClaim == null)
+        {
+            return Unauthorized();
+        }
+        var user = await _userService.GetUserByIdForCart(int.Parse(idClaim));
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+        if (user.Cart == null)
+        {
+            return NotFound();
+        }
+        await _cartRepository.CheckOut(user.Id);
+        return Ok();
     }
 }

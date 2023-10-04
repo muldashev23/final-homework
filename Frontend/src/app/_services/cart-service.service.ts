@@ -27,4 +27,7 @@ export class CartServiceService {
 
     return total;
   }
+  buy() {
+    return this.http.delete(this.baseUrl + 'cart');
+  }
 }
