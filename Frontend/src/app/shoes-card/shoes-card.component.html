@@ -3,12 +3,6 @@
         <img src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="(accountService.currentUser$ | async)" class="card-img-top"routerLink="/shoes/{{shoes.id}}" >
         <img src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="!(accountService.currentUser$ | async)" class="card-img-top"routerLink="/login" >
         <ul class="list-inline member-icons animate text-center">
-            
-            <li class="list-inline-item" *ngIf="admin">
-                <button class="btn btn-primary btn-sm" routerLink="/edit-shoes/{{shoes.id}}">
-                    <i class="fa fa-wrench fa-sm"></i>
-                </button>
-            </li>
             <li class="list-inline-item" *ngIf="admin">
                 <button class="btn btn-primary btn-sm" (click)="delete(shoes.id)">
                     <i class="fa fa-trash fa-sm"></i>

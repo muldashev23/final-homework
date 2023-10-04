@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Shoes } from '../_models/shoes';
 import { AddShoes } from '../_models/addShoes';
+import { NewSize } from '../_models/newSizes';
+import { NewPhoto } from '../_models/newPhotos';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +32,7 @@ export class ShoesSeviceService {
   delete(shoesId: number) {
     return this.http.delete(this.baseUrl + 'shoes/' + `${shoesId}`);
   }
-  addNewShoes(shoes: AddShoes, sizes: any, photos: any) {
+  addNewShoes(shoes: AddShoes, sizes: NewSize[], photos: NewPhoto[]) {
     shoes.available = shoes.amount;
     shoes.photos = photos;
     shoes.sizes = sizes;

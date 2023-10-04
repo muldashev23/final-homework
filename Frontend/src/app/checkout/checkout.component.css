@@ -1,0 +1,19 @@
+.card-body {
+  padding: 0 25px;
+}
+
+.card-footer {
+  padding: 2vh 3vh;
+  border-top: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+.card-title {
+  padding: 3vh 0;
+  text-align: center;
+}
+.row {
+  margin: 0 2vw;
+}

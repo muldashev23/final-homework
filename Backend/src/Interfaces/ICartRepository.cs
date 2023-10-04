@@ -6,6 +6,7 @@ namespace Backend.Interfaces;
 
 public interface ICartRepository
 {
-    public Task<SizeDTO> AddToCard(SizeDTO size, AppUser user, Shoes shoes);
-    public Task<CartResponseDTO> ListCart(int id);
+    Task<SizeDTO> AddToCard(SizeDTO size, AppUser user, Shoes shoes);
+    Task<CartResponseDTO> ListCart(int id);
+    Task CheckOut(int id);
 }

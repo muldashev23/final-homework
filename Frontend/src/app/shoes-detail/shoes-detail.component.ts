@@ -3,7 +3,7 @@ import { Shoes } from '../_models/shoes';
 import { CommonModule, NgFor } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoesSeviceService } from '../_services/shoes-sevice.service';
 import {
   FormBuilder,
@@ -39,7 +39,8 @@ export class ShoesDetailComponent implements OnInit {
   constructor(
     private shoesService: ShoesSeviceService,
     private route: ActivatedRoute,
-    private cartService: CartServiceService
+    private cartService: CartServiceService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -85,5 +86,8 @@ export class ShoesDetailComponent implements OnInit {
       }
     });
     window.location.reload();
+  }
+  checkout() {
+    this.router.navigateByUrl('/checkout');
   }
 }
