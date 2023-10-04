@@ -8,13 +8,18 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SharedModule } from './_shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoesCardComponent } from './shoes-card/shoes-card.component';
 import { ShoesDetailComponent } from './shoes-detail/shoes-detail.component';
 import { NotFoundComponent } from './_errors/not-found/not-found.component';
 import { ServerErrorComponent } from './_errors/server-error/server-error.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { HomeGenderComponent } from './home-page/searches/home-gender/home-gender.component';
+import { HomeBrandComponent } from './home-page/searches/home-brand/home-brand.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditShoesComponent } from './edit-shoes/edit-shoes.component';
+import { AddShoesComponent } from './add-shoes/add-shoes.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     ShoesCardComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    HomeGenderComponent,
+    HomeBrandComponent,
+    EditProfileComponent,
+    EditShoesComponent,
+    AddShoesComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +43,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

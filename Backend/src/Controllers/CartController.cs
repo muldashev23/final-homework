@@ -66,7 +66,7 @@ public class CartController : BaseApiController
         }
         if (user.Cart == null)
         {
-            return NotFound();
+            return new CartResponseDTO();
         }
         return await _cartRepository.ListCart(user.Id);
     }

@@ -1,4 +1,6 @@
 export interface User {
+  id: number;
   username: string;
-  tokenKey: string;
+  token: string;
+  isAdmin: boolean;
 }

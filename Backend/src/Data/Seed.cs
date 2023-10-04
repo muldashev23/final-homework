@@ -8,7 +8,7 @@ public class Seed
 {
     public static async Task SeedShoes(DataContext context)
     {
-        if (await context.Users.AnyAsync())
+        if (await context.Shoes.AnyAsync())
             return;
         var shoesData = await File.ReadAllTextAsync("Data/ShoesSeedData.json");
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };

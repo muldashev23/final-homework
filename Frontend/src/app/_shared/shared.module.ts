@@ -4,7 +4,7 @@ import { HeaderLayoutComponent } from './header-layout/header-layout.component';
 import { FooterLayoutComponent } from './footer-layout/footer-layout.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ToastrModule } from 'ngx-toastr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -15,6 +15,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AppRoutingModule,
     ToastrModule.forRoot(),
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
   ],
@@ -24,6 +25,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     BsDropdownModule,
     ToastrModule,
     TabsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

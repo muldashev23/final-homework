@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Shoes } from '../_models/shoes';
 import { CommonModule, NgFor } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -11,6 +11,9 @@ import {
   ReactiveFormsModule,
   NgForm,
 } from '@angular/forms';
+import { CartServiceService } from '../_services/cart-service.service';
+import { Cart } from '../_models/cart';
+import { Size } from '../_models/size';
 
 @Component({
   selector: 'app-shoes-detail',
@@ -26,23 +29,25 @@ import {
   templateUrl: './shoes-detail.component.html',
   styleUrls: ['./shoes-detail.component.css'],
 })
-export class ShoesDetailComponent {
+export class ShoesDetailComponent implements OnInit {
   shoes: Shoes | undefined;
   images: GalleryItem[] = [];
   sizeId: number = 0;
-  checkoutForm: any = {};
+  cart: Cart | undefined;
+  totalAmount = 0;
 
   constructor(
     private shoesService: ShoesSeviceService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private cartService: CartServiceService
   ) {}
 
   ngOnInit(): void {
     this.loadShoes();
+    this.loadCart();
   }
   loadShoes() {
-    var id = this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
     if (!id) return;
     this.shoesService.getOneShoes(id).subscribe({
       next: (shoes) => {
@@ -57,7 +62,28 @@ export class ShoesDetailComponent {
       this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
     }
   }
+
+  loadCart() {
+    this.cartService.getCart().subscribe({
+      next: (cart) => {
+        this.cart = cart;
+        if (this.cart && this.cart.id !== 0) {
+          this.totalAmount = this.cartService.calculateTotalPrice(this.cart);
+        }
+      },
+    });
+  }
   onSubmit() {
-    console.log(this.sizeId);
+    console.log(this.shoes?.id);
+    let sizeToBuy: Size;
+    this.shoes?.sizes.forEach((x) => {
+      if (x.id === this.sizeId) {
+        sizeToBuy = x;
+        this.cartService.addToCart(sizeToBuy, `${this.shoes?.id}`).subscribe({
+          next: (size) => {},
+        });
+      }
+    });
+    window.location.reload();
   }
 }

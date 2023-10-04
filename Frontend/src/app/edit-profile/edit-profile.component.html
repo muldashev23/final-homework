@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <form [formGroup]="editForm" (ngSubmit)="edit()" autocomplete="off">
+                <h2 class="text-center text-primary">Edit Profile</h2>
+                <hr>
+                <div class="mb-3">
+                    <input type="text"
+                        [class.is-invalid]="editForm.get('username')?.errors && editForm.get('username')?.touched"
+                        class="form-control"
+                        formControlName = "username"
+                        placeholder="Username"
+                    >
+                    <div class="invalid-feedback">Please enter a username</div>
+                </div>
+                <div class="mb-3">
+                    <input type="email"
+                        [class.is-invalid]="editForm.get('email')?.errors && editForm.get('email')?.touched"
+                        class="form-control"
+                        formControlName = "email"
+                        placeholder="Email"
+                    >
+                    <div class="invalid-feedback">Please enter a email</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password"
+                        [class.is-invalid]="editForm.get('password')?.errors && editForm.get('password')?.touched"
+                        class="form-control"
+                        formControlName = "password"
+                        placeholder="Your Current Password"
+                    >
+                    <div class="invalid-feedback" *ngIf="editForm.get('password')?.hasError('required')">Please enter a password</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('password')?.hasError('minlength')">Password must be at least 8 characters</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('password')?.hasError('maxlength')">Password must be max 16 characters</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password"
+                        [class.is-invalid]="editForm.get('newPassword')?.errors && editForm.get('newPassword')?.touched"
+                        class="form-control"
+                        formControlName = "newPassword"
+                        placeholder="New Password"
+                    >
+                    <div class="invalid-feedback" *ngIf="editForm.get('newPassword')?.hasError('required')">Please enter a password</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('newPassword')?.hasError('minlength')">Password must be at least 8 characters</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('newPassword')?.hasError('maxlength')">Password must be max 16 characters</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password"
+                        [class.is-invalid]="editForm.get('confirmPassword')?.errors && editForm.get('confirmPassword')?.touched"
+                        class="form-control"
+                        formControlName = "confirmPassword"
+                        placeholder="Confirm Password"
+                    >
+                    <div class="invalid-feedback" *ngIf="editForm.get('confirmPassword')?.hasError('required')">Please enter a confirmation password</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('confirmPassword')?.hasError('notMatching')">Confim password must match password</div>
+                </div>
+                <div class="mb-3" *ngIf="admin">
+                    <input type="radio" class="form-control" id="user" formControlName="role" class="btn-check"  value="User" checked/>
+                    <label class="btn btn-outline-primary" for="user">User</label>
+                    <input type="radio" class="form-control" id="admin" formControlName="role" class="btn-check"  value="Admin"/>
+                    <label class="btn btn-outline-primary" for="admin">Admin</label>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success me-2" type="submit">Register</button>
+                    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
