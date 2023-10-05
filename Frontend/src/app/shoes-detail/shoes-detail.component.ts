@@ -75,7 +75,7 @@ export class ShoesDetailComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.shoes?.id);
+    console.log(this.sizeId);
     let sizeToBuy: Size;
     this.shoes?.sizes.forEach((x) => {
       if (x.id === this.sizeId) {
@@ -85,7 +85,9 @@ export class ShoesDetailComponent implements OnInit {
         });
       }
     });
-    //window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
   checkout() {
     this.router.navigateByUrl('/checkout');
