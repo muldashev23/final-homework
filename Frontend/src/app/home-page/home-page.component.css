@@ -1,0 +1,5 @@
+.row {
+  min-width: 20vw;
+  max-width: 90vw;
+  margin: 1vh 5vw;
+}

@@ -1,7 +1,7 @@
-<div class="card mb-4" *ngIf="shoes">
+<div class="card" *ngIf="shoes">
     <div class="card-img-wrapper" >
-        <img src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="(accountService.currentUser$ | async)" class="card-img-top"routerLink="/shoes/{{shoes.id}}" >
-        <img src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="!(accountService.currentUser$ | async)" class="card-img-top"routerLink="/login" >
+        <img  src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="(accountService.currentUser$ | async)" class="card-img-top"routerLink="/shoes/{{shoes.id}}" >
+        <img  src="{{shoes.photoUrl}}" alt="{{shoes.brand}}" *ngIf="!(accountService.currentUser$ | async)" class="card-img-top"routerLink="/login" >
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item" *ngIf="admin">
                 <button class="btn btn-primary btn-sm" (click)="delete(shoes.id)">
