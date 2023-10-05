@@ -85,7 +85,7 @@ export class ShoesDetailComponent implements OnInit {
         });
       }
     });
-    window.location.reload();
+    //window.location.reload();
   }
   checkout() {
     this.router.navigateByUrl('/checkout');
