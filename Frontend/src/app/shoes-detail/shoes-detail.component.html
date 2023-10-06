@@ -1,5 +1,5 @@
 <div class="row" *ngIf="shoes">
-    <div class="col-2">
+    <div class="card-group col-lg-12 col-md-6 col-sm-6">
         <div class="card">
             <img src="{{shoes.photoUrl || './assets/user.png'}}" alt="{{shoes.name}}" class="card-img-top img-thumbnail">
             <form #f="ngForm" (ngSubmit)="onSubmit()">
@@ -32,51 +32,51 @@
             </form>
             
         </div>
-    </div>
-    <div class="col-6">
-        <gallery [items]="images" class="gallery"></gallery>
-    </div>
-    <div class="col-4">
         <div class="card">
-            <div class="card-title">
-                <h3>Your Cart</h3>
-            </div>
-                <div class="card-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="table-active">
-                                <th scope="col">Brand</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody *ngIf="cart && cart.id>0">
-                            
-                                <ng-template ngFor let-item [ngForOf]="cart.shoes" let-i="index">
-                                    <tr class="table-default">
-                                        <td>{{cart.shoes[i].brand}}</td>
-                                        <td>{{cart.shoes[i].name}}</td>
-                                        <td>{{cart.selectedSizes[i].sizeNum}}</td>
-                                        <td>{{cart.shoes[i].price}} $</td>
-                                    </tr>
-                                </ng-template>
-                            
-                            
-                        </tbody> 
-                    </table>
-                    <div *ngIf="!(cart && cart.id >0)">
-                        <div class="card-body">
-                            <p>Your Cart Is Empty</p>
-            
+            <gallery [items]="images" class="gallery"></gallery>
+        </div>
+            <div class="card" *ngIf="windowWidth>800">
+                <div class="card-title">
+                    <h3>Your Cart</h3>
+                </div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-active">
+                                    <th scope="col">Brand</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="cart && cart.id>0">
+                                
+                                    <ng-template ngFor let-item [ngForOf]="cart.shoes" let-i="index">
+                                        <tr class="table-default">
+                                            <td>{{cart.shoes[i].brand}}</td>
+                                            <td>{{cart.shoes[i].name}}</td>
+                                            <td>{{cart.selectedSizes[i].sizeNum}}</td>
+                                            <td>{{cart.shoes[i].price}} $</td>
+                                        </tr>
+                                    </ng-template>
+                                
+                                
+                            </tbody> 
+                        </table>
+                        <div *ngIf="!(cart && cart.id >0)">
+                            <div class="card-body">
+                                <p>Your Cart Is Empty</p>
+                
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <h5>Total:{{totalAmount}}$</h5>
+                            <button type="button" class="btn btn-success" (click)="checkout()">Go To Checkout</button>
                         </div>
                     </div>
-                </div>
-            <div class="card-footer">
-                <h5>Total:{{totalAmount}}$</h5>
-                <button type="button" class="btn btn-success" (click)="checkout()">Go To Checkout</button>
+                
+                
             </div>
-            
-        </div>
+        
     </div>
 </div>

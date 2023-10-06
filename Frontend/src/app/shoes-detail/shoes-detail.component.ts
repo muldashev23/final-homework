@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Shoes } from '../_models/shoes';
 import { CommonModule, NgFor } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -35,13 +35,16 @@ export class ShoesDetailComponent implements OnInit {
   sizeId: number = 0;
   cart: Cart | undefined;
   totalAmount = 0;
+  windowWidth: number;
 
   constructor(
     private shoesService: ShoesSeviceService,
     private route: ActivatedRoute,
     private cartService: CartServiceService,
     private router: Router
-  ) {}
+  ) {
+    this.windowWidth = window.innerWidth;
+  }
 
   ngOnInit(): void {
     this.loadShoes();
@@ -87,9 +90,13 @@ export class ShoesDetailComponent implements OnInit {
     });
     setTimeout(() => {
       window.location.reload();
-    }, 1000);
+    }, 500);
   }
   checkout() {
     this.router.navigateByUrl('/checkout');
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.windowWidth = window.innerWidth;
   }
 }
