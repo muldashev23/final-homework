@@ -15,7 +15,9 @@ export class HomePageComponent {
   }
   loadMembes() {
     this.shoesService.getAllShoes().subscribe({
-      next: (shoes) => (this.shoes = shoes),
+      next: (shoes) => {
+        this.shoes = shoes;
+      },
     });
   }
 }

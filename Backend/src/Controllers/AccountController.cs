@@ -62,13 +62,14 @@ public class AccountController : BaseApiController
         };
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
-        return new LoginResponseDTO
+        var NewUser = new LoginResponseDTO
         {
             Id = user.Id,
             Username = user.UserName,
             Token = _tokenService.CreateToken(user),
             IsAdmin = user.Role == "Admin"
         };
+        return Ok(NewUser);
     }
 
     [HttpDelete("{id}")]

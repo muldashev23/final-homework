@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from 'src/app/_models/cart';
 import { AccountService } from 'src/app/_services/account.service';
 import { CartServiceService } from 'src/app/_services/cart-service.service';
 
@@ -43,6 +42,9 @@ export class HeaderLayoutComponent implements OnInit {
     this.router.navigateByUrl('/checkout');
   }
   loadCart() {
+    if (!localStorage.getItem('user')) {
+      return;
+    }
     this.cartService.getCart().subscribe({
       next: (cart) => {
         if (cart && cart.id !== 0) {
