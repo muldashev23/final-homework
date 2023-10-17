@@ -8,9 +8,9 @@ namespace Backend.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public List<Shoes> Shoes { get; set; }
+        public required List<Shoes> Shoes { get; set; }
         public int UserId { get; set; }
-        public AppUser User { get; set; }
-        public List<SelectedSize> SelectedSizes { get; set; } = new();
+        public required AppUser User { get; set; }
+        public required List<SelectedSize> SelectedSizes { get; set; } = new();
     }
 }

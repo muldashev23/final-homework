@@ -11,5 +11,5 @@ public class Size
     public required int SizeNum { get; set; }
     public required int Amount { get; set; }
     public int ShoesID { get; set; }
-    public Shoes Shoes { get; set; }
+    public required Shoes Shoes { get; set; }
 }

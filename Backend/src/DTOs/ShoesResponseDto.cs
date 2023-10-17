@@ -16,6 +16,6 @@ public class ShoesResponseDto
 
     public required bool IsForMan { get; set; }
 
-    public List<PhotoDTO> Photos { get; set; } = new();
-    public List<SizeDTO> Sizes { get; set; } = new();
+    public required List<PhotoDTO> Photos { get; set; } = new();
+    public required List<SizeDTO> Sizes { get; set; } = new();
 }

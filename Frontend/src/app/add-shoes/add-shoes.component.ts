@@ -55,6 +55,7 @@ export class AddShoesComponent {
       .subscribe({
         next: (x) => {
           this.toaster.success('Shoes Added');
+          this.router.navigateByUrl('/');
         },
       });
   }

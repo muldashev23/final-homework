@@ -4,6 +4,7 @@ namespace Backend;
 
 public class UserUpdateDTO
 {
+    [Required]
     [EmailAddress(ErrorMessage = "Provide Email")]
     public required string Email { get; set; }
 

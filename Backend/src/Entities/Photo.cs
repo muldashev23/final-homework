@@ -11,5 +11,5 @@ public class Photo
     public required bool IsMain { get; set; }
     public string PublicId { get; set; }
     public int ShoesID { get; set; }
-    public Shoes Shoes { get; set; }
+    public required Shoes Shoes { get; set; }
 }
